@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspirational Quotes</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+        }
+        .quote-container {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .quote-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        .author {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        select {
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 25px;
+            background: #4caf50;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-container">
+        <h1>Quote of the Day</h1>
+        <select id="categorySelect">
+            <option value="inspiration">Inspiration</option>
+            <option value="motivation">Motivation</option>
+            <option value="life">Life</option>
+            <option value="success">Success</option>
+        </select>
+        <div class="quote-text" id="quoteText">"The best way to predict the future is to invent it."</div>
+        <div class="author" id="quoteAuthor">- Alan Kay</div>
+        <button id="newQuoteBtn">Get New Quote</button>
+    </div>
+
+    <script>
+        const quotes = {
+            inspiration: [
+                { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+                { text: "Act as if what you do makes a difference. It does.", author: "William James" },
+                { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+            ],
+            motivation: [
+                { text: "Don’t watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+                { text: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+                { text: "Dream big and dare to fail.", author: "Norman Vaughan" },
+            ],
+            life: [
+                { text: "Life is 10% what happens to us and 90% how we react to it.", author: "Charles R. Swindoll" },
+                { text: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
+                { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+            ],
+            success: [
+                { text: "Success is walking from failure to failure with no loss of enthusiasm.", author: "Winston Churchill" },
+                { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+                { text: "If you want to achieve greatness stop asking for permission.", author: "Anonymous" },
+            ],
+        };
+
+        const categorySelect = document.getElementById('categorySelect');
+        const quoteText = document.getElementById('quoteText');
+        const quoteAuthor = document.getElementById('quoteAuthor');
+        const newQuoteBtn = document.getElementById('newQuoteBtn');
+
+        newQuoteBtn.addEventListener('click', () => {
+            const category = categorySelect.value;
+            const categoryQuotes = quotes[category];
+            const randomIndex = Math.floor(Math.random() * categoryQuotes.length);
+            const quote = categoryQuotes[randomIndex];
+            quoteText.textContent = `"${quote.text}"`;
+            quoteAuthor.textContent = `- ${quote.author}`;
+        });
+    </script>
+</body>
+</html>
